@@ -2,6 +2,10 @@ import Schema from './schema';
 import validateRequest from '../../util/validateRequest';
 import logout from '../../services/user/logout';
 import login from '../../services/user/login';
+import register from '../../services/user/register';
+import findOne from '../../services/user/findOne';
+import findAll from '../../services/user/findAll';
+import findAllPost from '../../services/user/findAllPost';
 
 const controller = {};
 
@@ -24,6 +28,54 @@ controller.postLogout = async (req, res) => {
   await logout(params);
 
   res.json({ op: 'success' });
+};
+
+controller.postRegister = async (req, res) => {
+  const params = {
+    ...req.body,
+  };
+
+  const validated = await validateRequest(params, Schema.postRegister);
+  const doc = await register(validated);
+
+  res.json({ data: { doc } });
+};
+
+controller.getUser = async (req, res) => {
+  const user = res.locals.user;
+  const params = {
+    email: user.email,
+  };
+  const validated = await validateRequest(params, Schema.getUser);
+  const doc = await findOne(validated);
+
+  res.json({ data: doc });
+};
+
+controller.getAllUser = async (req, res) => {
+  const params = {
+    ...req.query,
+  };
+
+  const validated = await validateRequest(params, Schema.getAllUsers);
+
+  const doc = await findAll(validated);
+
+  res.json({ data: { doc } });
+};
+
+controller.getAllPosts = async (req, res) => {
+  const user = res.locals.user;
+  const params = {
+    userId: user.id,
+    ...req.query,
+  };
+
+  const validated = await validateRequest(params, Schema.getAllPosts);
+
+  const doc = await findAllPost(validated);
+
+  res.json({ data: { doc } });
 };
 
 export default controller;
