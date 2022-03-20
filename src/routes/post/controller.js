@@ -14,9 +14,9 @@ controller.postPost = async (req, res) => {
   };
 
   const validated = await validateRequest(params, Schema.postPost);
-  const token = await create(validated);
+  const doc = await create(validated);
 
-  res.json({ data: { token } });
+  res.json({ data: { doc } });
 };
 
 export default controller;

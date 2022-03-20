@@ -5,7 +5,12 @@ import UnauthorizedError from '../../exceptions/UnauthorizedError';
 
 // Decodes a jwt token and returns the corresponding user object if successful.
 export default async (token) => {
-  const decoded = jwt.verify(token, config.JWT_SECRET);
+  let decoded = '';
+  try {
+    decoded = jwt.verify(token, config.JWT_SECRET);
+  } catch (err) {
+    throw new UnauthorizedError('invalid token');
+  }
 
   const user = await models.user.findOne({
     attributes: { exclude: ['passwordDigest'] },
