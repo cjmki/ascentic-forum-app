@@ -1,0 +1,21 @@
+{
+    "extends": ["airbnb","plugin:prettier/recommended"],
+    "env": {
+      "es6": true,
+      "commonjs": true,
+      "node": true,
+      "mocha": true
+    },
+    "rules": {
+      "linebreak-style": ["error", "unix"],
+      "no-undef": "error",
+      "no-unused-vars": "error",
+      "global-require": "off",
+      "prefer-destructuring": 0,
+      "no-param-reassign": 0
+    },
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "sourceType": "module"
+    }
+}

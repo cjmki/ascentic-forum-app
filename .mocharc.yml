@@ -1,0 +1,5 @@
+require: '@babel/register'
+timeout: 8000
+exit: true
+colors: true
+reporter: "spec"
