@@ -8,7 +8,14 @@ const router = express.Router();
 router.patch(
   '/admin/approve/post',
   cee(auth(['admin'])),
-  cee(controller.postApprovePost)
+  cee(controller.patchApprovePost)
+);
+
+router.delete('/admin/post', cee(auth(['admin'])), cee(controller.deletePost));
+router.patch(
+  '/admin/block/user',
+  cee(auth(['admin'])),
+  cee(controller.patchBlockUser)
 );
 
 export default router;

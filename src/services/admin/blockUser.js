@@ -4,17 +4,17 @@ import NotFoundError from '../../exceptions/NotFoundError';
 
 const { Op } = sqlClient.Sequelize;
 
-export default async ({ id, approved }) => {
+export default async ({ id, blocked }) => {
   const q = {
     id: { [Op.eq]: id },
   };
 
-  let doc = await models.post.findOne({ where: q });
+  let doc = await models.user.findOne({ where: q });
   if (!doc) {
-    throw new NotFoundError('post not found');
+    throw new NotFoundError('user not found');
   }
 
-  doc.approved = approved;
+  doc.blocked = blocked;
   doc = doc.save();
   return doc;
 };
