@@ -1,3 +1,5 @@
+import Comment from './comment';
+
 export default (sequalize, DataTypes) => {
   const model = sequalize.define('post', {
     id: {
@@ -11,7 +13,6 @@ export default (sequalize, DataTypes) => {
       allowNull: false,
       foreignKey: true,
       references: {
-        // WorkingDays hasMany Users n:n
         model: 'users',
         key: 'id',
       },
@@ -20,6 +21,8 @@ export default (sequalize, DataTypes) => {
     content: { type: DataTypes.STRING(1000), allowNull: false },
     approved: { type: DataTypes.BOOLEAN, defaultValue: false },
   });
+  const comment = Comment(sequalize, DataTypes);
+  model.hasMany(comment);
 
   return model;
 };
