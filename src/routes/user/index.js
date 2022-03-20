@@ -28,4 +28,10 @@ router.get(
   cee(controller.getAllPosts)
 );
 
+router.get(
+  '/user/post-summary',
+  cee(auth(['admin', 'user'])),
+  cee(controller.getPostSummary)
+);
+
 export default router;

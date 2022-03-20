@@ -6,6 +6,7 @@ import register from '../../services/user/register';
 import findOne from '../../services/user/findOne';
 import findAll from '../../services/user/findAll';
 import findAllPost from '../../services/user/findAllPost';
+import generatePostSummary from '../../services/user/generatePostSummary';
 
 const controller = {};
 
@@ -74,6 +75,17 @@ controller.getAllPosts = async (req, res) => {
   const validated = await validateRequest(params, Schema.getAllPosts);
 
   const doc = await findAllPost(validated);
+
+  res.json({ data: { doc } });
+};
+
+controller.getPostSummary = async (req, res) => {
+  const user = res.locals.user;
+  const params = {
+    email: user.email,
+    firstName: user.firstName,
+  };
+  const doc = await generatePostSummary(params);
 
   res.json({ data: { doc } });
 };
