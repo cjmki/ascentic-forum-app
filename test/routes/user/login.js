@@ -39,7 +39,7 @@ describe('POST /user/login:', () => {
     wJsonPostRequest(app, {
       email: 'foo@google.com',
       password: 'foobar',
-    }).expect(401, done);
+    }).expect(404, done);
   });
 
   it('respond with json status 200 if valid credentials are provided', (done) => {

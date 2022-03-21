@@ -7,7 +7,7 @@
     "dev": "cross-env NODE_ENV=development nodemon -r dotenv-flow/config ./src/index.js",
     "test": "cross-env NODE_ENV=test mocha -r dotenv-flow/config",
     "start": "cross-env NODE_ENV=production node -r dotenv-flow/config ./build/server.js",
-    "build:": "cross-env NODE_ENV=production webpack --config webpack.config.js --progress",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js --progress",
     "lint": "./node_modules/.bin/eslint .",
     "lint:fix": "./node_modules/.bin/eslint . --fix",
     "test:pop:dev": "cross-env NODE_ENV=development node -r dotenv-flow/config contrib/index.js"
