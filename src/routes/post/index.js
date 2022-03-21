@@ -5,11 +5,16 @@ import auth from '../../middlewares/auth';
 
 const router = express.Router();
 
-router.get('/post', cee(auth(['admin', 'user'])), cee(controller.getUser));
 /**
  * query params : limit & offset
  */
-router.get('/post', cee(auth(['admin'])), cee(controller.getAllUser));
+router.get('/post', cee(auth(['admin', 'user'])), cee(controller.getAllPost));
 router.post('/post', cee(auth(['admin', 'user'])), cee(controller.postPost));
+router.put('/post', cee(auth(['admin', 'user'])), cee(controller.putPost));
+router.delete(
+  '/post',
+  cee(auth(['admin', 'user'])),
+  cee(controller.deletePost)
+);
 
 export default router;
