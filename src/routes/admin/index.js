@@ -18,4 +18,10 @@ router.patch(
   cee(controller.patchBlockUser)
 );
 
+router.patch(
+  '/admin/update/user',
+  cee(auth(['admin'])),
+  cee(controller.patchUpdateUser)
+);
+
 export default router;

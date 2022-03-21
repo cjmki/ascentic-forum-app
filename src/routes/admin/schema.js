@@ -1,4 +1,5 @@
 import Joi from 'joi';
+import { USER_ROLES } from '../../util/constants/common';
 
 let Schema = {};
 
@@ -14,6 +15,13 @@ Schema.deletePost = Joi.object({
 Schema.patchBlockUser = Joi.object({
   id: Joi.number().required(),
   blocked: Joi.boolean().required(),
+});
+
+Schema.patchUpdateUser = Joi.object({
+  id: Joi.number().required(),
+  role: Joi.string()
+    .valid(...USER_ROLES)
+    .required(),
 });
 
 export default Schema;

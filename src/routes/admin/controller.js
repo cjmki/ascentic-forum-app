@@ -3,6 +3,7 @@ import validateRequest from '../../util/validateRequest';
 import approvePost from '../../services/admin/approvePost';
 import deletePost from '../../services/admin/deletePost';
 import blockUser from '../../services/admin/blockUser';
+import updateUser from '../../services/admin/updateUser';
 
 const controller = {};
 
@@ -37,6 +38,17 @@ controller.patchBlockUser = async (req, res) => {
 
   const validated = await validateRequest(params, Schema.patchBlockUser);
   const doc = await blockUser(validated);
+
+  res.json({ data: { doc } });
+};
+controller.patchUpdateUser = async (req, res) => {
+  const params = {
+    id: req.query.id,
+    role: req.query.role,
+  };
+
+  const validated = await validateRequest(params, Schema.patchUpdateUser);
+  const doc = await updateUser(validated);
 
   res.json({ data: { doc } });
 };
