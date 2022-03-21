@@ -1,4 +1,4 @@
-![test](https://github.com/CJMki/ascentic-forum-app/actions/workflows/workflow-test.yml/badge.svg) ![build](https://github.com/CJMki/ascentic-forum-app/actions/workflows/workflow-build.yml/badge.svg)
+![test](https://github.com/CJMki/cj-s-nodejs-express-boilerplate/actions/workflows/workflow-test.yml/badge.svg) ![build](https://github.com/CJMki/cj-s-nodejs-express-boilerplate/actions/workflows/workflow-build.yml/badge.svg)
 
 - Boilerplate code from [Charith Jayawardana's nodejs boilerplate](https://github.com/cjmki/cj-s-nodejs-express-boilerplate)
 
@@ -10,12 +10,12 @@
   - [Known Bugs and Improvements](#known-bugs-and-improvements)
 - [Architecture](#architecture)
   - [ER Diagram](#er-diagram)
-  - [ER Diagram](#er-diagram-1)
+  - [System Diagram](#system-diagram)
 - [Instructions](#instructions)
   - [Running locally:](#running-locally)
   - [Running in production:](#running-in-production)
   - [Testing:](#testing)
-  - [Code formating](#code-formating)
+  - [Code formatting](#code-formatting)
 - [Project Structure](#project-structure)
 - [API Endpoints](#api-endpoints)
   - [List of available routes:](#list-of-available-routes)
@@ -23,8 +23,8 @@
 - [Database](#database)
   - [SQL - Postgres](#sql---postgres)
 - [Coding Standard](#coding-standard)
-  - [**Styde Guide - Linting**](#styde-guide---linting)
-  - [**Error Hangling**](#error-hangling)
+  - [**Style Guide - Linting**](#style-guide---linting)
+  - [**Error Handling**](#error-handling)
   - [**Logging**](#logging)
   - [**Environment Variables**](#environment-variables)
   - [**API Validation**](#api-validation)
@@ -59,22 +59,22 @@
 ### Non-Functional Requirements (Bonus):
 | Task      | Status | Comments
 | ----------- | ----------- |----------
-| As a developer, I want to document APIs so that it will make it easy for anyone to read about the API.      | Done       | Find more [API endpoitns](#api-endpoints)
+| As a developer, I want to document APIs so that it will make it easy for anyone to read about the API.      | Done       | Find more [API endpoints](#api-endpoints)
 | As a developer, Develop unit tests.   | POC Done        | With tide time constraint decided to prioritize implementing functionality and as a POC completed unit testing for route `/user/login`
 | As a developer, restrict API access from the public so that only authorized people with the correct token can access it.   | Done        | Find more [API Security](#secured-routes---jtw)
 | As a developer, I need to debug the application for critical bugs/errors.   | Done        | Find more [Logging](#logging)
-| As a developer, do error handling so that the application will be reliable.   | Done        | Find more [Error handling](#error-hangling)
+| As a developer, do error handling so that the application will be reliable.   | Done        | Find more [Error handling](#error-handling)
 
 ### Known Bugs and Improvements
 
-Please do a global keyword search on FIXME to find inline comments regarding potention bugs and improvements.
+Please do a global keyword search on FIXME to find inline comments regarding potential bugs and improvements.
 
 ## Architecture 
 
 ### ER Diagram 
 
 ![Tux, the Linux mascot](/assets/images/er-diagram.png)
-### ER Diagram 
+### System Diagram 
 
 ![Tux, the Linux mascot](/assets/images/system-diagram.png)
 
@@ -120,7 +120,7 @@ npm run test
 
 Linting:
 
-### Code formating 
+### Code formatting 
 
 ```bash
 # to see exsiting linting issues
@@ -185,7 +185,7 @@ src\
 
 ## Coding Standard
 
-### **Styde Guide - Linting**
+### **Style Guide - Linting**
 
 Linting is done using [ESLint](https://eslint.org/) and [Prettier](https://prettier.io).
 
@@ -198,7 +198,7 @@ The express app has a centralized error handling mechanism.
 
 This utility will catch the errors propagated within the app from the error handling middleware (by calling `next(error)`). For convenience, you can wrap the routes inside the catchExpressExceptions utility wrapper, which forwards the error.
 
-### **Error Hangling**
+### **Error Handling**
 
 Error handling middleware to catch exception thrown from express
 
@@ -251,7 +251,7 @@ The validation schemas are defined in the `src/routes/route/schema.js` directory
 
 ### **Secured Routes - JTW**
 
-API endpoints has been secuired using [JWT](https://www.npmjs.com/package/jsonwebtoken). We create a random string and store it in both the database and the JWT. This way we can invalidate (sort of) JWTs on demand. one could argue this defeats the purpose and runs contrary to the core stateless concept of JWTs. But I think invalidation is important, this is the solution that came to my mind.
+API endpoints has been secured using [JWT](https://www.npmjs.com/package/jsonwebtoken). We create a random string and store it in both the database and the JWT. This way we can invalidate (sort of) JWTs on demand. one could argue this defeats the purpose and runs contrary to the core stateless concept of JWTs. But I think invalidation is important, this is the solution that came to my mind.
 
 ## Todo list
 
