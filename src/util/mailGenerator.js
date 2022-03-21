@@ -16,7 +16,7 @@ generator.approvePost = (email, postId) => {
                 </tr>
               </table><br>
               <h1 style="font-size: 18px; font-weight: 400; margin: 2;">Please verify and approve this post ${config.frontendHost}/post/approve?id=${postId}</h1><br><br>
-              <b>We Two Works Team</b>
+              <b>Ascentic Forum App Team</b>
               `;
   template.to = email;
   template.subject = `[admin] - ascentic test app | post approval ✔`;
@@ -40,7 +40,7 @@ generator.postSummary = (email, firstName, posts) => {
                   `> - ${post.title} | ${post.updatedAt}</h3>`
                 );
               })}
-              <b>We Two Works Team</b>
+              <b>Ascentic Forum App Team</b>
               `;
   template.to = email;
   template.subject = `[admin] - ascentic test app | post summary (last 24 hrs) ✔`;
